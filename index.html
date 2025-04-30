@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mapa Turístico de Aracaju</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; }
+    #map { height: 100vh; width: 100vw; }
+    .legend {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<div class="legend">
+  <b>Pontos Turísticos</b><br>
+  - Orla de Atalaia<br>
+  - Oceanário de Aracaju<br>
+  - Museu da Gente Sergipana
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
+<script>
+  var map = L.map('map').setView([-10.9472, -37.0731], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+  }).addTo(map);
+
+  var icon = L.AwesomeMarkers.icon({
+    icon: 'star',
+    markerColor: 'blue',
+    prefix: 'fa'
+  });
+
+  var pontos = [
+    { nome: "Orla de Atalaia", coords: [-10.9846, -37.0509] },
+    { nome: "Oceanário de Aracaju", coords: [-10.9875, -37.0436] },
+    { nome: "Museu da Gente Sergipana", coords: [-10.9064, -37.0486] }
+  ];
+
+  pontos.forEach(p => {
+    L.marker(p.coords, { icon: icon }).addTo(map)
+      .bindPopup("<b>" + p.nome + "</b>");
+  });
+</script>
+</body>
+</html>
