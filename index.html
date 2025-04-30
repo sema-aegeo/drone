@@ -13,14 +13,37 @@
         <link rel="stylesheet" href="css/filter.css">
 <link rel="stylesheet" href="css/nouislider.min.css">
         <style>
-        #map {
-            width: 1331px;
-            height: 848px;
-        }
+		  html, body {
+		    height: 100%;
+		    margin: 0;
+		    font-family: Arial, sans-serif;
+		    background: #f4f4f4;
+		  }
+		
+		  h1 {
+		    text-align: center;
+		    margin-top: 20px;
+		    font-size: 26px;
+		  }
+		
+		  #map {
+		    width: 800px;
+		    height: 600px;
+		    margin: 20px auto;
+		    border: 2px solid #ccc;
+		    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		  }
+		
+		  .legenda {
+		    text-align: center;
+		    margin-top: 10px;
+		    font-size: 16px;
+		  }
         </style>
         <title></title>
     </head>
     <body>
+	<h1>Mapa Temático - Registro de Utilização dos Drones da SEMA</h1>    
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
